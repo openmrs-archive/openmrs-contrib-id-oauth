@@ -1,0 +1,14 @@
+<% title = 'OpenMRS ID - Authorization Request' %>
+<% headline = 'Authorization Request' %>
+
+
+<p><%= user[conf.user.firstname] %>,</p>
+<p><strong><%= client.name %></strong> is requesting access to your OpenMRS ID.</p>
+<p>Do you approve?</p>
+
+<form action="decision" method="post">
+  <input name="transaction_id" type="hidden" value="<%= transactionID %>">
+  <input name="client_id" type="hidden" value="<%= client.clientId %>">
+  <input type="submit" value="Accept and continue" id="allow">
+  <input type="submit" value="Cancel" name="cancel" id="deny">
+</form>

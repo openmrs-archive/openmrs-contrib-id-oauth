@@ -1,0 +1,38 @@
+{
+  "name": "openmrs-contrib-id-oauth",
+  "version": "0.0.1",
+  "description": "oauth authorization for openmrs id",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elliottwilliams/openmrs-contrib-id-oauth"
+  },
+  "keywords": [
+    "sso",
+    "openmrs",
+    "openmrsid",
+    "oauth",
+    "openid"
+  ],
+  "author": "Elliott Williams <elliott@openmrs.org>",
+  "license": "MPLv2",
+  "bugs": {
+    "url": "https://github.com/elliottwilliams/openmrs-contrib-id-oauth/issues"
+  },
+  "dependencies": {
+    "oauth2orize": "~1.0.1",
+    "connect": "~2.15.0",
+    "passport": "~0.2.0",
+    "passport-oauth2-client-password": "~0.1.1",
+    "passport-http": "~0.2.2",
+    "lodash": "~2.4.1",
+    "sequelize": "~1.7.5",
+    "express": "~2.5.9",
+    "uid2": "0.0.3",
+    "passport-http-bearer": "~1.0.1",
+    "async": "~0.8.0"
+  }
+}
