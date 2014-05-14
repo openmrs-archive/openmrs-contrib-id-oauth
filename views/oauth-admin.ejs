@@ -8,14 +8,16 @@
   <li><h3><%= clients[i].name %></h3>
     <dl>
       <dt>Client ID</dt>
-      <dd><%= clients[i].clientId %></dd>
+      <dd><%= clients[i].clientUuid %></dd>
+      <dt>Shared Secret</dt>
+      <dd><%= clients[i].secret %></dd>
       <dt>Redirect URI</dt>
       <dd><%= clients[i].redirectURI %></dd>
     </dl>
     <a href="oauth/delete/<%=clients[i].id%>">Delete Client</a>
   </li>
   <% } if (clients.length === 0) { %>
-  <p>There are no registered clients.</p>
+  <p>There are no registered clients. Boo.</p>
   <% } %>
 </ul>
 
@@ -33,8 +35,8 @@
     <input id="sharedSecret" type="text" name="secret" placeholder="Secret" autocomplete="off">
     <span class="description">
       ( <a href="javascript:generateSecret()">generate a secret</a> ) The secret is
-      checked during the token authorization process. Secrets are
-      not displayed in the OpenMRS ID admin panel after this step.
+      checked during the token authorization process. In case you couldn't tell
+      by the name, don't ever publicize the secret.
     </span>
   </div>
   <div class="field">

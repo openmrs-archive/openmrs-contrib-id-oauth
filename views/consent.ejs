@@ -6,9 +6,9 @@
 <p><strong><%= client.name %></strong> is requesting access to your OpenMRS ID.</p>
 <p>Do you approve?</p>
 
-<form action="decision" method="post">
+<form action="/oauth/authorize/decision" method="post">
   <input name="transaction_id" type="hidden" value="<%= transactionID %>">
-  <input name="client_id" type="hidden" value="<%= client.clientId %>">
+  <input name="client_id" type="hidden" value="<%= client.clientUuid %>">
   <input type="submit" value="Accept and continue" id="allow">
   <input type="submit" value="Cancel" name="cancel" id="deny">
 </form>
