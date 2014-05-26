@@ -1,14 +1,29 @@
 <% title = 'OpenMRS ID - Authorization Request' %>
 <% headline = 'Authorization Request' %>
+<% layout('layouts/dialog') %>
 
 
-<p><%= user[conf.user.firstname] %>,</p>
-<p><strong><%= client.name %></strong> is requesting access to your OpenMRS ID.</p>
-<p>Do you approve?</p>
+<p>
+  <%= user[conf.user.displayname] %>,
+</p>
+<p>
+  <strong><%= client.name %></strong>
+  is requesting access to your OpenMRS ID profile (<%= user[conf.user.username]%>).
+</p>
+<p>
+  Do you approve?
+</p>
 
 <form action="/oauth/authorize/decision" method="post">
   <input name="transaction_id" type="hidden" value="<%= transactionID %>">
   <input name="client_id" type="hidden" value="<%= client.clientUuid %>">
-  <input type="submit" value="Accept and continue" id="allow">
-  <input type="submit" value="Cancel" name="cancel" id="deny">
+
+  <button class="btn btn-success" type="submit" id="allow" name="allow" value="allow" autofocus>
+    <i class="icon-ok"></i>
+    Yes, Allow and continue
+  </button>
+  <button class="btn btn-link" type="submit" id="deny" name="cancel" value="cancel">
+    <i class="icon-remove"></i>
+    No, Cancel
+  </button>
 </form>
