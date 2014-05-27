@@ -3,6 +3,11 @@
 <% layout('layouts/dialog') %>
 
 
+<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10
+col-xs-offset-1">
+
+<% if (loggedIn) { %>
+
 <p>
   <%= user[conf.user.displayname] %>,
 </p>
@@ -19,11 +24,53 @@
   <input name="client_id" type="hidden" value="<%= client.clientUuid %>">
 
   <button class="btn btn-success" type="submit" id="allow" name="allow" value="allow" autofocus>
-    <i class="icon-ok"></i>
-    Yes, Allow and continue
+    <i class="icon-ok"></i>Yes, Allow and continue
   </button>
   <button class="btn btn-link" type="submit" id="deny" name="cancel" value="cancel">
-    <i class="icon-remove"></i>
-    No, Cancel
+    <i class="icon-remove"></i>No, Cancel
   </button>
 </form>
+
+<hr>
+
+<p class="small">
+  Not <%= user[conf.user.displayname] %>?
+  <a href="/disconnect?destination=<%=encodeURIComponent(url)%>">
+    Use a different account.
+  </a>
+</p>
+
+<% } else { %>
+
+  <p>
+    Sign in with your <strong>OpenMRS ID</strong> to link with
+    <strong><%= client.name %></strong>.
+  </p>
+
+  <form action="/login" method="post">
+    <input type="hidden" name="destination" value="<%=url%>">
+    
+    <div class="form-group">
+      <label for="loginusername">OpenMRS ID</label>
+      <input type="text" class="form-control" name="loginusername" placeholder="OpenMRS ID" autofocus>
+    </div>
+    
+    <div class="form-group">
+      <label for="loginpassword">Password</label>
+      <input type="password" class="form-control" name="loginpassword" placeholder="Password">
+    </div>
+    
+    <input class="btn btn-primary" type="submit" value="Login with OpenMRS ID &#187;">
+  </form>
+
+  <hr>
+
+  <p>Need an OpenMRS ID? Create an account.</p>
+
+  <a href="/signup" class="btn btn-success">
+    Sign up for an OpenMRS ID &#187;
+  </a>
+
+<% } %>
+
+</div>
