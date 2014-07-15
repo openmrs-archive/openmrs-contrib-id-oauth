@@ -18,9 +18,27 @@ Installation:
     vim ../../conf.js
     # Add "openmrs-contrib-id-oauth" to list of user-modules
 
-To-do:
 
-* Document OAuth API
+API
+---
+
+### /oauth/authorize
+
+OAuth Authorization Request Endpoint
+
+Send a user (a UA or browser) to this endpoint to begin the authorization flow.
+
+### /oauth/token
+
+OAuth Access Token Request Endpoint
+
+Called by the client to exchange an authorization code for an access token.
+
+### /oauth/userinfo
+
+OpenMRS ID Profile Endpoint
+
+Make an authenticated request to this resource to get the authorized user's profile data.
 
 
 [1]: https://github.com/openmrs/openmrs-contrib-id
