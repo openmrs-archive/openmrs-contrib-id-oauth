@@ -9,11 +9,11 @@ col-xs-offset-1">
 <% if (loggedIn) { %>
 
 <p>
-  <%= user[conf.user.displayname] %>,
+  <%= user.displayName %>,
 </p>
 <p>
   <strong><%= client.name %></strong>
-  is requesting access to your OpenMRS ID profile (<%= user[conf.user.username]%>).
+  is requesting access to your OpenMRS ID profile (<%= user.username %>).
 </p>
 <p>
   Do you approve?
@@ -34,7 +34,7 @@ col-xs-offset-1">
 <hr>
 
 <p class="small">
-  Not <%= user[conf.user.displayname] %>?
+  Not <%= user.displayName %>?
   <a href="/disconnect?destination=<%=encodeURIComponent(url)%>">
     Use a different account.
   </a>
