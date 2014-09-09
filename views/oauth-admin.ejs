@@ -8,7 +8,7 @@
   <li><h3><%= clients[i].name %></h3>
     <dl>
       <dt>Client ID</dt>
-      <dd><%= clients[i].clientUuid %></dd>
+      <dd><%= clients[i].id %></dd>
       <dt>Shared Secret</dt>
       <dd><%= clients[i].secret %></dd>
       <dt>Redirect URI</dt>
@@ -48,7 +48,7 @@
     </span>
   </div>
   <input type="submit" value="Add Client">
-  
+
 </form>
 
 <script type="text/javascript">
