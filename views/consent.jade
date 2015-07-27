@@ -1,0 +1,44 @@
+extends ../../../../templates/layouts/dialog
+
+block defines
+  - title = 'OpenMRS ID - Authorization Request';
+  - headline = 'Authorization Request';
+
+
+block content
+  if connected
+    p= user.displayName
+    p <strong> #{client.name} </strong> is requesting access to your OpenMRS ID profile (#{user.username}).
+    p Do you approve?
+    form(action='/oauth/authorize/decision', method='post')
+      input(name='transaction_id', type='hidden', value= transactionID)
+      input(name='client_id', type='hidden', value= client._id)
+      button#allow.btn.btn-success(type='submit', name='allow', value='allow', autofocus='')
+        i.icon-ok Yes, Allow and continue
+      button#deny.btn.btn-link(type='submit', name='cancel', value='cancel')
+        i.icon-remove No, Cancel
+    hr
+
+    p.small.
+     Not #{user.displayName}? <a href="disconnect?destination=#{encodeURIComponent(url)}"> Use a diffent account
+  else
+    p.
+      Sign in with your <strong>OpenmMRS ID</strong> to link with <strong>#{client.name}</strong>.
+
+    form(action='/login', method='post')
+      input(type='hidden', name='destination', value= url)
+      div.form-group
+        label(for='loginusername') OpenMRS ID
+        input.form-control(type='text', name='loginusername',
+                           placeholder='OpenMRS ID', autofocus='')
+      div.form-group
+        label(for='loginpassword') Password
+        input.form-control(type='password', name='loginpassword',
+                           placeholder='Password')
+      input.btn.btn-primary(type='submit', value='Login with OpenMRS ID »')
+    hr
+
+    p Need an OpenMRS ID? Create an account.
+    a.btn.btn-success(href='/signup')
+      | Sign up for an OpenMRS ID &raquo;
+

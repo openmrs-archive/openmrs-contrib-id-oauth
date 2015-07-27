@@ -1,0 +1,64 @@
+extends ../../../../templates/views/admin
+
+block defines
+  -title = 'OpenMRS ID - OAuth Admin';
+  -headline = 'OAuth Client Registration';
+  -showSidebar = true;
+  -sidebar = [];
+
+append head
+  script(type='text/javascript').
+    function generatePassword() {
+      var length = 12;
+      var charset = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      var ret = '';
+      for (var i = 0, n = charset.length; i < length; ++i) {
+        ret += charset.charAt(Math.floor(Math.random() * n));
+      }
+      return ret;
+    }
+
+    function generateSecret() {
+      document.getElementById('sharedSecret').value = generatePassword()
+    }
+
+block content
+
+  h2 Registered Clients
+
+  ul
+    each client in clients
+      li <h3> #{client.name} </h3>
+        dl
+          dt Client ID
+          dd= client.id
+          dt Shared Secret
+          dd= client.secret
+          dt Redirect URI
+          dd= client.redirectURI
+      a(href='oauth/delete/#{client.id}') Delete Client
+    if (clients.length === 0)
+      p There are no registered clients. Boo.
+
+  h2 Add a new client
+  form(method='post')
+    div.field
+      label Client Name
+      input(type='text', name='name', placeholder='Name')
+      span.description
+        | The client's name identifies it to users the consent dialog.
+    div.field
+      label Shared Secret
+      input#sharedSecret(type='text', name='secret',
+                  placeholder='Secret', autocomplete='off')
+      span.description.
+        (<a href="javascript:generateSecret()"> generate a secret </a>
+        ) The secret is checked during the token authorization process. In case you couldn't tell by the name, don't ever publicize the secret.
+    div.field
+      label Redirect / Callback URI
+      input(type='text', name='redirectURI', placeholder='URI')
+      span.description.
+        This URI points to a resource that can receive the grant token. Authorization requests must specify this <em>exact</em>
+         redirect URI.
+    input.btn.btn-success(type='submit', value='Add Client')
+
