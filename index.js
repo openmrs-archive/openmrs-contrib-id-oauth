@@ -1,11 +1,13 @@
-var Common = require(global.__commonModule);
-var app = require('./lib/app');
+'use strict';
+exports = module.exports = function (app) {
 
-// Require oauth2, which contains goodies pertaining to our OAuth implementation
-Common.module.oauth = require('./lib/oauth2');
 
-// Load the app and mount it within OpenMRS ID
-Common.app.use(app);
+require('./lib/admin')(app);
+require('./lib/app')(app);
 
-// Load the admin page
-require('./lib/admin');
+
+};
+/**
+ * oauth implementation shouldn't be exposed, IMHO --- Ply_py
+ */
+// exports.oauth = require('./lib/oauth2');
