@@ -41,20 +41,20 @@ block content
       p There are no registered clients. Boo.
 
   h2 Add a new client
-  form(method='post')
-    div.field
+  form(method='post').form-horizontal
+    div.form-group
       label Client Name
       input(type='text', name='name', placeholder='Name')
       span.description
         | The client's name identifies it to users the consent dialog.
-    div.field
+    div.form-group
       label Shared Secret
       input#sharedSecret(type='text', name='secret',
                   placeholder='Secret', autocomplete='off')
       span.description.
         (<a href="javascript:generateSecret()"> generate a secret </a>
         ) The secret is checked during the token authorization process. In case you couldn't tell by the name, don't ever publicize the secret.
-    div.field
+    div.form-group
       label Redirect / Callback URI
       input(type='text', name='redirectURI', placeholder='URI')
       span.description.
