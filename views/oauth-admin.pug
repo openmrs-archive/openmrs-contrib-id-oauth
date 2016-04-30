@@ -36,7 +36,7 @@ block content
           dd= client.secret
           dt Redirect URI
           dd= client.redirectURI
-      a(href='oauth/delete/#{client.id}') Delete Client
+      a(href= "oauth/delete/" + client.id) Delete Client
     if (clients.length === 0)
       p There are no registered clients. Boo.
 
