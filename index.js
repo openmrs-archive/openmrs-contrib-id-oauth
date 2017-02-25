@@ -2,8 +2,8 @@
 exports = module.exports = app => {
 
 
-	require('./lib/admin')(app);
-	require('./lib/app')(app);
+    require('./lib/admin')(app);
+    require('./lib/app')(app);
 
 
 };
