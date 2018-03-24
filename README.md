@@ -1,5 +1,6 @@
 OAuth for OpenMRS ID
 ========
+# This is no longer in use, but is here for historical purposes.
 [![Dependencies Status](https://david-dm.org/openmrs/openmrs-contrib-id-oauth/status.svg)](https://david-dm.org/openmrs/openmrs-contrib-id-oauth)
 [![devDependencies Status](https://david-dm.org/openmrs/openmrs-contrib-id-oauth/dev-status.svg)](https://david-dm.org/openmrs/openmrs-contrib-id-oauth?type=dev)
  [![OpenMRS Talk](https://omrs-shields.psbrandt.io/custom/openmrs/talk/F26522?logo=openmrs)](http://talk.openmrs.org/c/projects/id-dashboard)
